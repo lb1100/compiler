@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1478707736 source:c:\workplace\compiler\compiler\main.cpp
+	"header.h"
+	"parameter.h"
+	"symbol.h"
+	"error.h"
+
+1478622443 c:\workplace\compiler\compiler\include\header.h
+	<stdio.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	<ctype.h>
+	<algorithm>
+	"error.h"
+	"header.h"
+	"symbol.h"
+
+1478622372 c:\workplace\compiler\compiler\include\error.h
+	"header.h"
+
+1478622294 c:\workplace\compiler\compiler\include\symbol.h
+	"header.h"
+
+1478707964 source:c:\workplace\compiler\compiler\src\error.cpp
+	"error.h"
+
+1478707952 source:c:\workplace\compiler\compiler\src\symbol.cpp
+	"symbol.h"
+
