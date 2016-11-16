@@ -62,6 +62,10 @@ private:
     int number;
     int proc_type;
     int return_flg;
+    int level=0;
 };
 
+
+#define OUT() cout << level <<":";
+//for(int w=0;w<(level);i++) cout << "\t";
 #endif // GRAMMER_H

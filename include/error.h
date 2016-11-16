@@ -39,6 +39,7 @@ namespace Error{
         "Need a right bracket", //25
         "Need a assignment", //26
         "Array index <= zero", //27
+        "Need a comma", //28
     };
     const int EXCEED_INT_RANGE = 0;
     const int LEADING_ZERO = 1;
@@ -68,6 +69,7 @@ namespace Error{
     const int NO_RBRACKET = 25;
     const int NO_ASSIGN = 26;
     const int ARRAY_BOUND_ERROR = 27;
+    const int NO_COMMA = 28;
 }
 
 
