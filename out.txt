@@ -4,51 +4,71 @@ const dec:M=20
 const dec:W=30
 var dec : int arr[100]
 function dec:  int get_next
-Error : No type found
-Error : Need an identifier
 parmeter: int x
-Error : Need a lparent
-term f1
-expr t0
-Error : Need a rparent
-Error : Need a simicolon
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
+2:factor x
+2:term f1
+1:expr t1
+2:factor 1
+2:term f1
+1:expr + t1
+return expr
 procedure dec: proc
-Error : No type found
-Error : Need an identifier
+procedure declare : void proc
 parmeter: int l
-Error : No type found
-Error : Need an identifier
 parmeter: int r
-Error : No type found
-Error : Need an identifier
 parmeter: int w
-var dec: int i
-factor l
-term f1
-expr t0
+var dec : int i
+2:factor l
+2:term f1
+1:expr t1
 assignment i =  expr
-Error : Unkown statement
-Error : Unkown statement
-Error : Invalid identifier
-Error : Unkown statement
-Error : Unkown statement
-factor i
-term f1
-expr t0
-Error : Need a right bracket
-Error : Need a assignment
-term f1
-expr t0
+while dec:
+2:factor i
+2:term f1
+1:expr t1
+2:factor r
+2:term f1
+1:expr t1
+condition : exprA <= exprB
+2:factor i
+2:term f1
+1:expr t1
+2:factor w
+2:term f1
+1:expr t1
 assignment arr[exprA] = exprB
-Error : Unkown statement
-Error : Unkown statement
-call i
-term f1
-expr t0
+while end:
+return 
+procedure dec: print_end
+procedure declare : void print_end
+printf "program ended" 
+function dec: int fact
+function dec:  int fact
+parmeter: int n
+if dec 
+2:factor n
+2:term f1
+1:expr t1
+2:factor 1
+2:term f1
+1:expr t1
+condition : exprA <= exprB
+2:factor 1
+2:term f1
+1:expr t1
+return expr
+if dec end
+2:factor n
+2:term f1
+call fact
+4:factor n
+4:term f1
+3:expr t1
+4:factor 1
+4:term f1
+3:expr - t1
 args_list : expr 1
+<<<<<<< HEAD
 Error : Need a rparent
 Error : Unkown statement
 printf "program ended" 
@@ -83,18 +103,30 @@ Error : Unkown statement
 Error : Unkown statement
 Error : Unkown statement
 Error : Unkown statement
+=======
+
+arg list end 
+2:factor __call fact
+2:term * f2
+1:expr t1
+return expr
+>>>>>>> origin/master
 function dec: int mod
 function dec:  int mod
-Error : No type found
-Error : Need an identifier
 parmeter: int a
-Error : No type found
-Error : Need an identifier
 parmeter: int b
-factor a
-term f1
-expr t0
+2:factor a
+2:term f1
+1:expr t1
+2:factor a
+2:term f1
+2:factor b
+2:term / f2
+2:factor b
+2:term * f3
+1:expr - t1
 assignment a =  expr
+<<<<<<< HEAD
 Error : Unkown statement
 Error : Unkown statement
 Error : Invalid identifier
@@ -107,24 +139,43 @@ Error : Need a simicolon
 Error : Unkown statement
 var dec: int a
 var dec: char ch
+=======
+2:factor a
+2:term f1
+1:expr t1
+return expr
+var dec : int a
+var dec : int b
+var dec : int c
+var dec : int i
+var dec : int _q
+var dec : int _w1220
+var dec : char ch
+>>>>>>> origin/master
 printf "start test\n" 
 scanf a
-factor a
-term f1
-expr t0
-condition : expr
-Error : Need a rparent
-Error : Unkown statement
-factor a
-term f1
-expr t0
-condition : expr
-Error : Need a rparent
-Error : Unkown statement
-call ch
-term f1
-expr t0
+if dec 
+2:factor a
+2:term f1
+1:expr t1
+2:factor 100
+2:term f1
+1:expr t1
+condition : exprA < exprB
+if dec 
+2:factor a
+2:term f1
+1:expr t1
+2:factor 0
+2:term f1
+1:expr t1
+condition : exprA >= exprB
+call proc
+2:factor 0
+2:term f1
+1:expr t1
 args_list : expr 1
+<<<<<<< HEAD
 Error : Need a rparent
 Error : Unkown statement
 Error : Unkown statement
@@ -136,86 +187,107 @@ Error : Unkown statement
 printf "arr[a]=" 
 term f1
 expr t0
+=======
+2:factor a
+2:term f1
+1:expr t1
+arg list expr 1
+2:factor a
+2:term f1
+1:expr t1
+2:factor 1
+2:term f1
+1:expr + t1
+arg list expr 1
+
+arg list end 
+printf "arr[a]=" 
+4:factor a
+4:term f1
+3:expr t1
+2:factor arr[expr]
+2:term f1
+1:expr t1
+>>>>>>> origin/master
 printf expr
-Error : Need a rparent
-factor a
-term f1
-expr t0
-Error : Need a right bracket
-Error : Need a assignment
-term f1
-expr t0
-assignment arr[exprA] = exprB
-Error : Unkown statement
+if dec end
+if dec end
 scanf b
 scanf c
-factor b
-term f1
-expr t0
+2:factor b
+2:term f1
+2:factor c
+2:term * f2
+1:expr t1
+2:factor a
+2:term f1
+1:expr + t1
+call _q
+4:factor a
+4:term f1
+3:expr t1
+4:factor 1
+4:term f1
+3:expr + t1
+args_list : expr 1
+
+arg list end 
+2:factor __call get_next
+2:term f1
+2:factor 10
+2:term / f2
+1:expr - t1
 assignment _q =  expr
-Error : Unkown statement
-Error : Unkown statement
-Error : Invalid identifier
-Error : Unkown statement
-Error : Unkown statement
-Error : Invalid identifier
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-call ch
-term f1
-expr t0
+call b
+4:factor b
+4:term f1
+3:expr t1
 args_list : expr 1
-Error : Need a rparent
-factor __call mod
-term f1
-expr t0
+4:factor 3
+4:term f1
+3:expr t1
+arg list expr 1
+
+arg list end 
+2:factor __call mod
+2:term f1
+1:expr t1
 assignment b =  expr
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-factor b
-term f1
-expr t0
-Error : Need a rparent
-Error : Need a left brace
-Error : Need a right brace
-Error : Unkown statement
-factor c
-term f1
-expr t0
+2:factor b
+2:term f1
+1:expr t1
+case 1
+2:factor c
+2:term f1
+1:expr t1
+2:factor 1
+2:term f1
+1:expr + t1
 assignment c =  expr
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-factor c
-term f1
-expr t0
+case 2
+2:factor c
+2:term f1
+1:expr t1
+2:factor 2
+2:term f1
+1:expr + t1
 assignment c =  expr
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-factor c
-term f1
-expr t0
+2:factor c
+2:term f1
+1:expr t1
+2:factor 3
+2:term f1
+1:expr + t1
 assignment c =  expr
-Error : Unkown statement
-call ch
-term f1
-expr t0
+call c
+4:factor c
+4:term f1
+3:expr t1
 args_list : expr 1
-Error : Need a rparent
-factor __call fact
-term f1
-expr t0
+
+arg list end 
+2:factor __call fact
+2:term f1
+1:expr t1
 printf expr
-Error : Unkown statement
-call ch
-term f1
-expr t0
-args_list : expr 1
-Error : Need a rparent
-Error : Unkown statement
+call print_end

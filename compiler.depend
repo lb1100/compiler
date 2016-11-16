@@ -37,3 +37,24 @@
 	"symbol.h"
 	"error.h"
 
+1479311116 source:c:\users\valor\documents\github\compiler\main.cpp
+	"header.h"
+	"parameter.h"
+	"symbol.h"
+	"error.h"
+	"grammer.h"
+
+1479303638 source:c:\users\valor\documents\github\compiler\src\error.cpp
+	"error.h"
+
+1479313367 source:c:\users\valor\documents\github\compiler\src\grammer.cpp
+	"grammer.h"
+
+1479303638 source:c:\users\valor\documents\github\compiler\src\symbol.cpp
+	"symbol.h"
+
+1479303638 source:c:\users\valor\documents\github\compiler\src\symboltable.cpp
+	"symboltable.h"
+	"symbol.h"
+	"error.h"
+

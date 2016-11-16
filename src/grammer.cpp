@@ -216,12 +216,12 @@ void Grammer::args_dec(){ // args declare
         sym -> getNextSymbol();
         return;
     }
-    if (is_type()) {
+    if (!is_type()) {
         error(Error::NO_TYPE_FOUND);
     }
     is_int = sym->reserved_type == Type::intsym;
     sym -> getNextSymbol();
-    if (sym -> getNextSymbol() != Type::IDENT) {
+    if (sym -> symbol != Type::IDENT) {
         error(Error::NO_IDENT);
     }
 
@@ -232,16 +232,16 @@ void Grammer::args_dec(){ // args declare
     #ifdef GRAMMER_DEBUG
     cout << "parmeter: " << (is_int ? "int" : "char") << " " << sym->name << endl;
     #endif
-
+    sym -> getNextSymbol();
     while(sym -> symbol == Type::COMMA){
         sym -> getNextSymbol();
 
-        if (is_type()) {
+        if (!is_type()) {
             error(Error::NO_TYPE_FOUND);
         }
         is_int = sym->reserved_type == Type::intsym;
         sym -> getNextSymbol();
-        if (sym -> getNextSymbol() != Type::IDENT) {
+        if (sym -> symbol != Type::IDENT) {
             error(Error::NO_IDENT);
         }
 
@@ -252,6 +252,7 @@ void Grammer::args_dec(){ // args declare
         #ifdef GRAMMER_DEBUG
         cout << "parmeter: " << (is_int ? "int" : "char") << " " << sym->name << endl;
         #endif
+        sym -> getNextSymbol();
     }
 
     if (sym -> symbol != Type::RPARENT){
@@ -269,50 +270,58 @@ void Grammer::args_list(){ // xxx(
     expr();
     num ++;
     #ifdef GRAMMER_DEBUG
-    cout << "args_list : expr "  << num ;
+    cout << "args_list : expr "  << num <<endl;
     #endif
 
     while(sym -> symbol == Type::COMMA){
+        sym -> getNextSymbol();
         expr();
         #ifdef GRAMMER_DEBUG
-        cout << " expr " << num;
+        cout << "arg list expr " << num <<endl;
         #endif
     }
     cout << endl;
     if (sym -> symbol != Type::RPARENT){
         error(Error::NO_RPARENT);
     }
+    #ifdef GRAMMER_DEBUG
+        cout << "arg list end " << endl;
+    #endif
     sym -> getNextSymbol();
 }
 
 void Grammer::expr(){
+    level++;
     int num = 0;
     if (sym -> symbol == Type::PLUS || sym -> symbol == Type::MINUS){
         #ifdef GRAMMER_DEBUG
-        cout << "expr " << (sym -> symbol == Type::PLUS ? "+" : "-")  << endl;
+        OUT();cout << "expr " << (sym -> symbol == Type::PLUS ? "+" : "-")  << endl;
         #endif
         sym -> getNextSymbol();
     }
     term();
+    num++;
     #ifdef GRAMMER_DEBUG
-    cout << "expr t" << num  << endl;
+    OUT();cout << "expr t" << num  << endl;
     #endif
     while (sym -> symbol == Type::PLUS || sym -> symbol == Type::MINUS) {
         bool plus = sym -> symbol == Type::PLUS;
         sym -> getNextSymbol();
         term();
         #ifdef GRAMMER_DEBUG
-        cout << "expr " << (plus?"+":"-")  << " t" << num  << endl;
+        OUT();cout << "expr " << (plus?"+":"-")  << " t" << num  << endl;
         #endif
     }
+    level--;
 }
 
 void Grammer::term(){
+    level ++;
     int num = 0;
     factor();
     num ++;
     #ifdef GRAMMER_DEBUG
-    cout << "term f" << num << endl;
+    OUT();cout << "term f" << num << endl;
     #endif
     while(sym -> symbol == Type::MULTIPLY || sym -> symbol == Type::DIV){
         bool mul = sym -> symbol == Type::MULTIPLY;
@@ -320,9 +329,10 @@ void Grammer::term(){
         factor();
         num++;
         #ifdef GRAMMER_DEBUG
-        cout << "term " << (mul ? "*" : "/") << " f" << num << endl;
+        OUT();cout << "term " << (mul ? "*" : "/") << " f" << num << endl;
         #endif
     }
+    level--;
 }
 
 void Grammer::factor(){
@@ -330,16 +340,16 @@ void Grammer::factor(){
     if (sym -> symbol == Type::PLUS || sym -> symbol == Type::MINUS){
         num();
         #ifdef GRAMMER_DEBUG
-        cout << "factor " << number << endl;
+        OUT();cout << "factor " << number << endl;
         #endif
         sym -> getNextSymbol();
         return ;
     }
 
     // number
-    if (sym -> symbol == Type::U_NUM){
+    if (sym -> symbol == Type::U_NUM || sym -> symbol == Type::NUM){
         #ifdef GRAMMER_DEBUG
-        cout << "factor " << sym->num << endl;
+        OUT();cout << "factor " << sym->num << endl;
         #endif
         this -> number = sym -> num;
         sym -> getNextSymbol();
@@ -349,7 +359,7 @@ void Grammer::factor(){
     // char
     if (sym -> symbol == Type::CHAR){
         #ifdef GRAMMER_DEBUG
-        cout << "factor " << sym->chr << endl;
+        OUT();cout << "factor " << sym->chr << endl;
         #endif
         this -> number = sym -> chr;
         sym -> getNextSymbol();
@@ -362,7 +372,7 @@ void Grammer::factor(){
         sym -> getNextSymbol();
         if (sym -> symbol == Type::LPARENT){ //call
             call();
-            cout << "factor __call " << name_x << endl;
+            OUT();cout << "factor __call " << name_x << endl;
         } else if (sym -> symbol == Type::LBRACKET) { // x[
             sym -> getNextSymbol();
             expr();
@@ -370,14 +380,14 @@ void Grammer::factor(){
                 error(Error::NO_RBRACKET);
             }
             #ifdef GRAMMER_DEBUG
-            cout << "factor " << name_x << "[expr]" << endl;
+            OUT();cout << "factor " << name_x << "[expr]" << endl;
             #endif
             sym -> getNextSymbol();
         } else {
             #ifdef GRAMMER_DEBUG
-            cout << "factor " << name_x << endl;
+            OUT();cout << "factor " << name_x << endl;
             #endif
-            sym -> getNextSymbol();
+            //sym -> getNextSymbol();
             return;
         }
     }
@@ -398,11 +408,18 @@ void Grammer::condition(){
     expr();
 
     #ifdef GRAMMER_DEBUG
-    cout << "condition : exprA " << *Type::type_message[oper].rbegin() << " exprB" << endl;
+    string s = Type :: type_message[oper];
+    int i;
+    for(i=s.length(); s[i]!='\t'; i--);
+    s = s.substr(i+1,s.length() - i - 1);
+    cout << "condition : exprA " << s << " exprB" << endl;
     #endif
 }
 
 void Grammer::if_dec(){ // if
+    #ifdef GRAMMER_DEBUG
+    cout << "if dec " << endl;
+    #endif
     if (sym -> symbol != Type::LPARENT){
         error(Error::NO_LPARENT);
     }
@@ -416,6 +433,9 @@ void Grammer::if_dec(){ // if
     sym -> getNextSymbol();
 
     statement();
+    #ifdef GRAMMER_DEBUG
+    cout << "if dec end" << endl;
+    #endif
 }
 
 void Grammer::while_dec(){
@@ -430,6 +450,7 @@ void Grammer::while_dec(){
     if (sym -> symbol != Type::RPARENT){
         error(Error::NO_RPARENT);
     }
+    sym -> getNextSymbol();
     statement();
     #ifdef GRAMMER_DEBUG
     cout << "while end:" << endl;
@@ -440,7 +461,7 @@ void Grammer::call(){ // xxx(
     #ifdef GRAMMER_DEBUG
     cout << "call " << this->name << endl;
     #endif
-
+    sym->getNextSymbol();
     args_list();
 }
 
@@ -472,7 +493,11 @@ void Grammer::read_dec(){ // scanf
     if (sym -> symbol != Type::RPARENT){
         error(Error::NO_RPARENT);
     }
+    sym -> getNextSymbol();
 
+    if (sym -> symbol != Type::SIMICOLON){
+        error(Error::NO_SIMICOLON);
+    }
     sym -> getNextSymbol();
 }
 
@@ -492,12 +517,18 @@ void Grammer::write_dec(){ // printf
     }
 
     if (sym -> symbol != Type::RPARENT){
+        if (flg){
+            if (sym -> symbol != Type::COMMA){
+                error(Error::NO_COMMA);
+            }
+            sym -> getNextSymbol();
+        }
         expr();
         #ifdef GRAMMER_DEBUG
         cout << "printf " << "expr" <<  endl;
         #endif
         flg = 1;
-        sym -> getNextSymbol();
+        //sym -> getNextSymbol();
     }
 
     if (sym -> symbol == Type::RPARENT){
@@ -508,6 +539,11 @@ void Grammer::write_dec(){ // printf
     } else {
         error(Error::NO_RPARENT);
     }
+
+    if (sym -> symbol != Type::SIMICOLON){
+        error(Error::NO_SIMICOLON);
+    }
+    sym -> getNextSymbol();
 }
 
 void Grammer::switch_dec(){ //switch
@@ -584,7 +620,9 @@ void Grammer::return_dec(){ // 0 no return , 1 return (xxx), 2 return;
         }
         sym -> getNextSymbol();
         expr();
-
+        #ifdef GRAMMER_DEBUG
+        cout << "return expr" << endl;
+        #endif
         if (sym -> symbol != Type::RPARENT){
             error(Error::NO_RPARENT);
         }
@@ -594,7 +632,10 @@ void Grammer::return_dec(){ // 0 no return , 1 return (xxx), 2 return;
         }
         sym -> getNextSymbol();
     } else if (return_flg == 2){
-        sym -> getNextSymbol();
+        //sym -> getNextSymbol();
+        #ifdef GRAMMER_DEBUG
+        cout << "return " << endl;
+        #endif
         if (sym -> symbol != Type::SIMICOLON){
             error(Error::NO_SIMICOLON);
         }
@@ -635,16 +676,25 @@ void Grammer::statement(){
         //call
         string name_x;
         name_x = sym -> name;
-        this -> name = name;
+        this -> name = sym -> name;
         sym -> getNextSymbol();
         if (sym -> symbol == Type::LPARENT){ // call
             call();
+            if (sym -> symbol != Type::SIMICOLON){
+                error(Error::NO_SIMICOLON);
+            }
+            sym -> getNextSymbol();
+
         } else if (sym -> symbol == Type::ASSIGN){//assignment x=
             sym -> getNextSymbol();
             expr();
             #ifdef GRAMMER_DEBUG
             cout << "assignment " << name_x << " =  expr" << endl;
             #endif
+            if (sym -> symbol != Type::SIMICOLON){
+                error(Error::NO_SIMICOLON);
+            }
+            sym ->getNextSymbol();
         } else if (sym -> symbol == Type::LBRACKET){//assignment x[a]=
             sym -> getNextSymbol();
             expr();
@@ -661,10 +711,15 @@ void Grammer::statement(){
             #ifdef GRAMMER_DEBUG
             cout << "assignment " << name_x << "[exprA] = exprB" << endl;
             #endif
+            if (sym -> symbol != Type::SIMICOLON){
+                error(Error::NO_SIMICOLON);
+            }
+            sym ->getNextSymbol();
         } else{
             error(Error::INVALID_IDENT);
             sym -> getNextSymbol();
         }
+        return;
     }
 
 
@@ -696,7 +751,9 @@ void Grammer::statement(){
     }
 
     if (sym -> symbol == Type::RESERVED && sym -> reserved_type == Type::returnsym){
+        sym -> getNextSymbol();
         return_dec();
+        return;
     }
 
     error(Error::UNKNOWN_STATEMENT);
@@ -707,6 +764,8 @@ void Grammer::statements(){// 0 no return, 1 return (xxx), 2 return;
     while (sym -> symbol != Type::RBRACE) {
         statement();
     }
+    //if (sym -> symbol == Type::RBRACE)
+    //    sym -> getNextSymbol();
 }
 
 void Grammer::compound_sentence(){
@@ -723,30 +782,17 @@ void Grammer::compound_sentence(){
         }
         this -> name = sym->name;
 
-        #ifdef CHECK
-        fprintf(stderr, "not implement\n");
-        #endif
-        #ifdef GRAMMER_DEBUG
-        cout << "var dec: " << (is_int ? "int" : "char") << " " << name << endl;
-        #endif
-
         sym -> getNextSymbol();
-
-        while(sym -> symbol == Type::COMMA){
-            sym -> getNextSymbol();
-            if (sym -> symbol != Type::IDENT){
-                error(Error::NO_IDENT);
-            }
-            sym -> getNextSymbol();
-        }
-
-        if (sym -> symbol != Type::SIMICOLON) {
-            error(Error::NO_SIMICOLON);
-        }
-        sym -> getNextSymbol();
+        var_dec();
     }
 
     statements();
+    /*
+    if (sym -> symbol != Type::LBRACE){
+        error(Error::NO_LBRACE);
+    }
+    sym -> getNextSymbol();
+    */
 }
 
 void Grammer::func_dec(){ // int/char xxx(,
@@ -767,6 +813,9 @@ void Grammer::func_dec(){ // int/char xxx(,
 }
 
 void Grammer::proc_dec(){ // void xxx(,
+    #ifdef GRAMMER_DEBUG
+    cout << "procedure declare : void " << this->name <<endl;
+    #endif
     args_dec();
     if (sym -> symbol != Type::LBRACE){
         error(Error::NO_LBRACE);
