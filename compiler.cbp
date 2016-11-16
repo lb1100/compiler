@@ -35,12 +35,16 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/error.h" />
+		<Unit filename="include/grammer.h" />
 		<Unit filename="include/header.h" />
 		<Unit filename="include/parameter.h" />
 		<Unit filename="include/symbol.h" />
+		<Unit filename="include/symboltable.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/error.cpp" />
+		<Unit filename="src/grammer.cpp" />
 		<Unit filename="src/symbol.cpp" />
+		<Unit filename="src/symboltable.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

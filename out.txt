@@ -1,293 +1,221 @@
-0	:	reserved_word	const
-1	:	reserved_word	int
-2	:	identifier	N
-3	:	assign		=
-4	:	unsigned_num	10
-5	:	simicolon	;
-6	:	reserved_word	const
-7	:	reserved_word	char
-8	:	identifier	ch
-9	:	assign		=
-10	:	char		'a'
-11	:	simicolon	;
-12	:	reserved_word	const
-13	:	reserved_word	int
-14	:	identifier	M
-15	:	assign		=
-16	:	unsigned_num	20
-17	:	comma		,
-18	:	identifier	W
-19	:	assign		=
-20	:	unsigned_num	30
-21	:	simicolon	;
-22	:	reserved_word	int
-23	:	identifier	arr
-24	:	left_bracket	[
-25	:	unsigned_num	100
-26	:	right_bracket	]
-27	:	simicolon	;
-28	:	reserved_word	int
-29	:	identifier	get_next
-30	:	left_parenthesis	(
-31	:	reserved_word	int
-32	:	identifier	x
-33	:	right_parenthesis	)
-34	:	left_brace	{
-35	:	reserved_word	return
-36	:	left_parenthesis	(
-37	:	identifier	x
-38	:	plus		+
-39	:	unsigned_num	1
-40	:	right_parenthesis	)
-41	:	simicolon	;
-42	:	right_brace	}
-43	:	reserved_word	void
-44	:	identifier	proc
-45	:	left_parenthesis	(
-46	:	reserved_word	int
-47	:	identifier	l
-48	:	comma		,
-49	:	reserved_word	int
-50	:	identifier	r
-51	:	comma		,
-52	:	reserved_word	int
-53	:	identifier	w
-54	:	right_parenthesis	)
-55	:	left_brace	{
-56	:	reserved_word	int
-57	:	identifier	i
-58	:	simicolon	;
-59	:	identifier	i
-60	:	assign		=
-61	:	identifier	l
-62	:	simicolon	;
-63	:	reserved_word	while
-64	:	left_parenthesis	(
-65	:	identifier	i
-66	:	less_equal	<=
-67	:	identifier	r
-68	:	right_parenthesis	)
-69	:	identifier	arr
-70	:	left_bracket	[
-71	:	identifier	i
-72	:	right_bracket	]
-73	:	assign		=
-74	:	identifier	w
-75	:	simicolon	;
-76	:	reserved_word	return
-77	:	simicolon	;
-78	:	right_brace	}
-79	:	reserved_word	void
-80	:	identifier	print_end
-81	:	left_parenthesis	(
-82	:	right_parenthesis	)
-83	:	left_brace	{
-84	:	reserved_word	printf
-85	:	left_parenthesis	(
-86	:	string		"program ended"
-87	:	right_parenthesis	)
-88	:	simicolon	;
-89	:	right_brace	}
-90	:	reserved_word	int
-91	:	identifier	fact
-92	:	left_parenthesis	(
-93	:	reserved_word	int
-94	:	identifier	n
-95	:	right_parenthesis	)
-96	:	left_brace	{
-97	:	reserved_word	if
-98	:	left_parenthesis	(
-99	:	identifier	n
-100	:	less_equal	<=
-101	:	unsigned_num	1
-102	:	right_parenthesis	)
-103	:	reserved_word	return
-104	:	left_parenthesis	(
-105	:	unsigned_num	1
-106	:	right_parenthesis	)
-107	:	simicolon	;
-108	:	reserved_word	return
-109	:	left_parenthesis	(
-110	:	identifier	n
-111	:	multiply	*
-112	:	identifier	fact
-113	:	left_parenthesis	(
-114	:	identifier	n
-115	:	minux		-
-116	:	unsigned_num	1
-117	:	right_parenthesis	)
-118	:	right_parenthesis	)
-119	:	simicolon	;
-120	:	right_brace	}
-121	:	reserved_word	int
-122	:	identifier	mod
-123	:	left_parenthesis	(
-124	:	reserved_word	int
-125	:	identifier	a
-126	:	comma		,
-127	:	reserved_word	int
-128	:	identifier	b
-129	:	right_parenthesis	)
-130	:	left_brace	{
-131	:	identifier	a
-132	:	assign		=
-133	:	identifier	a
-134	:	minux		-
-135	:	identifier	a
-136	:	div		/
-137	:	identifier	b
-138	:	multiply	*
-139	:	identifier	b
-140	:	simicolon	;
-141	:	reserved_word	return
-142	:	left_parenthesis	(
-143	:	identifier	a
-144	:	right_parenthesis	)
-145	:	simicolon	;
-146	:	right_brace	}
-147	:	reserved_word	void
-148	:	reserved_word	main
-149	:	left_parenthesis	(
-150	:	right_parenthesis	)
-151	:	left_brace	{
-152	:	reserved_word	int
-153	:	identifier	a
-154	:	comma		,
-155	:	identifier	b
-156	:	comma		,
-157	:	identifier	c
-158	:	comma		,
-159	:	identifier	i
-160	:	comma		,
-161	:	identifier	_q
-162	:	comma		,
-163	:	identifier	_w1220
-164	:	simicolon	;
-165	:	reserved_word	char
-166	:	identifier	ch
-167	:	simicolon	;
-168	:	reserved_word	printf
-169	:	left_parenthesis	(
-170	:	string		"start test\n"
-171	:	right_parenthesis	)
-172	:	simicolon	;
-173	:	reserved_word	scanf
-174	:	left_parenthesis	(
-175	:	identifier	a
-176	:	right_parenthesis	)
-177	:	simicolon	;
-178	:	reserved_word	if
-179	:	left_parenthesis	(
-180	:	identifier	a
-181	:	less		<
-182	:	unsigned_num	100
-183	:	right_parenthesis	)
-184	:	left_brace	{
-185	:	reserved_word	if
-186	:	left_parenthesis	(
-187	:	identifier	a
-188	:	greater_equal	>=
-189	:	num	0
-190	:	right_parenthesis	)
-191	:	left_brace	{
-192	:	identifier	proc
-193	:	left_parenthesis	(
-194	:	num	0
-195	:	comma		,
-196	:	identifier	a
-197	:	comma		,
-198	:	identifier	a
-199	:	plus		+
-200	:	unsigned_num	1
-201	:	right_parenthesis	)
-202	:	simicolon	;
-203	:	reserved_word	printf
-204	:	left_parenthesis	(
-205	:	string		"arr[a]="
-206	:	comma		,
-207	:	identifier	arr
-208	:	left_bracket	[
-209	:	identifier	a
-210	:	right_bracket	]
-211	:	right_parenthesis	)
-212	:	simicolon	;
-213	:	right_brace	}
-214	:	right_brace	}
-215	:	reserved_word	scanf
-216	:	left_parenthesis	(
-217	:	identifier	b
-218	:	comma		,
-219	:	identifier	c
-220	:	right_parenthesis	)
-221	:	simicolon	;
-222	:	identifier	_q
-223	:	assign		=
-224	:	identifier	b
-225	:	multiply	*
-226	:	identifier	c
-227	:	plus		+
-228	:	identifier	a
-229	:	minux		-
-230	:	identifier	get_next
-231	:	left_parenthesis	(
-232	:	identifier	a
-233	:	plus		+
-234	:	unsigned_num	1
-235	:	right_parenthesis	)
-236	:	div		/
-237	:	unsigned_num	10
-238	:	simicolon	;
-239	:	identifier	b
-240	:	assign		=
-241	:	identifier	mod
-242	:	left_parenthesis	(
-243	:	identifier	b
-244	:	comma		,
-245	:	unsigned_num	3
-246	:	right_parenthesis	)
-247	:	simicolon	;
-248	:	reserved_word	switch
-249	:	left_parenthesis	(
-250	:	identifier	b
-251	:	right_parenthesis	)
-252	:	left_brace	{
-253	:	reserved_word	case
-254	:	unsigned_num	1
-255	:	colon		:
-256	:	identifier	c
-257	:	assign		=
-258	:	identifier	c
-259	:	plus		+
-260	:	unsigned_num	1
-261	:	simicolon	;
-262	:	reserved_word	case
-263	:	unsigned_num	2
-264	:	colon		:
-265	:	identifier	c
-266	:	assign		=
-267	:	identifier	c
-268	:	plus		+
-269	:	unsigned_num	2
-270	:	simicolon	;
-271	:	reserved_word	default
-272	:	colon		:
-273	:	identifier	c
-274	:	assign		=
-275	:	identifier	c
-276	:	plus		+
-277	:	unsigned_num	3
-278	:	simicolon	;
-279	:	right_brace	}
-280	:	reserved_word	printf
-281	:	left_parenthesis	(
-282	:	identifier	fact
-283	:	left_parenthesis	(
-284	:	identifier	c
-285	:	right_parenthesis	)
-286	:	right_parenthesis	)
-287	:	simicolon	;
-288	:	identifier	print_end
-289	:	left_parenthesis	(
-290	:	right_parenthesis	)
-291	:	simicolon	;
-292	:	right_brace	}
+const dec:N=10
+const dec:ch= 'a'
+const dec:M=20
+const dec:W=30
+var dec : int arr[100]
+function dec:  int get_next
+Error : No type found
+Error : Need an identifier
+parmeter: int x
+Error : Need a lparent
+term f1
+expr t0
+Error : Need a rparent
+Error : Need a simicolon
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+procedure dec: proc
+Error : No type found
+Error : Need an identifier
+parmeter: int l
+Error : No type found
+Error : Need an identifier
+parmeter: int r
+Error : No type found
+Error : Need an identifier
+parmeter: int w
+var dec: int i
+factor l
+term f1
+expr t0
+assignment i =  expr
+Error : Unkown statement
+Error : Unkown statement
+Error : Invalid identifier
+Error : Unkown statement
+Error : Unkown statement
+factor i
+term f1
+expr t0
+Error : Need a right bracket
+Error : Need a assignment
+term f1
+expr t0
+assignment arr[exprA] = exprB
+Error : Unkown statement
+Error : Unkown statement
+call i
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+Error : Unkown statement
+printf "program ended"
+Error : Unkown statement
+call i
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+Error : Unkown statement
+Error : Invalid identifier
+Error : Unkown statement
+factor n
+term f1
+expr t0
+condition : expr
+Error : Need a rparent
+Error : Unkown statement
+Error : Need a simicolon
+Error : Unkown statement
+Error : Unkown statement
+Error : Need a simicolon
+Error : Unkown statement
+Error : Unkown statement
+call i
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+function dec: int mod
+function dec:  int mod
+Error : No type found
+Error : Need an identifier
+parmeter: int a
+Error : No type found
+Error : Need an identifier
+parmeter: int b
+factor a
+term f1
+expr t0
+assignment a =  expr
+Error : Unkown statement
+Error : Unkown statement
+Error : Invalid identifier
+Error : Unkown statement
+Error : Need a lparent
+term f1
+expr t0
+Error : Need a rparent
+Error : Need a simicolon
+Error : Unkown statement
+var dec: int a
+var dec: char ch
+printf "start test\n"
+scanf a
+factor a
+term f1
+expr t0
+condition : expr
+Error : Need a rparent
+Error : Unkown statement
+factor a
+term f1
+expr t0
+condition : expr
+Error : Need a rparent
+Error : Unkown statement
+call ch
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+Error : Unkown statement
+Error : Unkown statement
+Error : Invalid identifier
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+printf "arr[a]="
+term f1
+expr t0
+printf expr
+Error : Need a rparent
+factor a
+term f1
+expr t0
+Error : Need a right bracket
+Error : Need a assignment
+term f1
+expr t0
+assignment arr[exprA] = exprB
+Error : Unkown statement
+scanf b
+scanf c
+factor b
+term f1
+expr t0
+assignment _q =  expr
+Error : Unkown statement
+Error : Unkown statement
+Error : Invalid identifier
+Error : Unkown statement
+Error : Unkown statement
+Error : Invalid identifier
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+call ch
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+factor __call mod
+term f1
+expr t0
+assignment b =  expr
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+factor b
+term f1
+expr t0
+Error : Need a rparent
+Error : Need a left brace
+Error : Need a right brace
+Error : Unkown statement
+factor c
+term f1
+expr t0
+assignment c =  expr
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+factor c
+term f1
+expr t0
+assignment c =  expr
+Error : Unkown statement
+Error : Unkown statement
+Error : Unkown statement
+factor c
+term f1
+expr t0
+assignment c =  expr
+Error : Unkown statement
+call ch
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+factor __call fact
+term f1
+expr t0
+printf expr
+Error : Unkown statement
+call ch
+term f1
+expr t0
+args_list : expr 1
+Error : Need a rparent
+Error : Unkown statement

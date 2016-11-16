@@ -13,6 +13,7 @@ Symbol::~Symbol()
 void Symbol::getNewLine(){
     if (! fin->getline(buffer, 256)){
         ch = EOF;
+        eof = true;
         return;
     }
     //cout <<"***" << buffer << endl;
@@ -25,6 +26,7 @@ void Symbol::getNewLine(){
 }
 
 void Symbol::setUp(const char* src){
+    eof = false;
     if (src == NULL)
         fatal(Fatal::NO_SOURCE_FILE);
     fin = new ifstream(src, ios::in);
@@ -42,8 +44,11 @@ void Symbol::getch(){
     if (!buffer[cur]){
         // process next line
         getNewLine();
-        if (ch == EOF)
+        if (ch == EOF){
+            eof = true;
             return;
+        }
+
         //cur ++;
     }
     ch = buffer[cur];
@@ -86,9 +91,12 @@ bool Symbol::getNextSymbol(){
     while (ch == ' ' || ch == '\t')
         getch();
     // false --> EOF
-    if (ch==EOF)
+    if (ch==EOF){
+        eof = true;
         return false;
+    }
     symbol = Type::ERROR;
+    reserved_type = 0;
     /*
     if (ch == '+' || ch == '-'){
         int sgn = ch == '+' ? 1 : -1;
@@ -175,6 +183,7 @@ bool Symbol::getNextSymbol(){
         }
 
         return true;
+        return true;
     }
 
     if (ch == '<') {
@@ -254,8 +263,10 @@ bool Symbol::getNextSymbol(){
         text[count] = 0;
         name = text;
 
-        if (reserved_word.count(name))
+        if (reserved_word.count(name)){
             symbol = Type::RESERVED;
+            reserved_type = reserved_word_to_int[name];
+        }
         else
             symbol = Type::IDENT;
 
@@ -286,6 +297,12 @@ void init(){
     reserved_word.insert("scanf");
     reserved_word.insert("printf");
     reserved_word.insert("return");
+
+    int num = 0;
+    for(auto x : reserved_word) {
+        reserved_word_to_int[x] = num ++;
+    }
+
 
     //cout << reserved_word.size() << endl;
 }

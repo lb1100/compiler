@@ -6,6 +6,7 @@
 using namespace std;
 
 extern set<string> reserved_word;
+extern map<string, int> reserved_word_to_int;
 
 namespace Type{
 
@@ -76,6 +77,12 @@ const int COLON = 24;
 
 const int IDENT = 25;
 const int RESERVED = 26;
+
+enum RESERVED{
+    casesym, charsym, constsym, defaultsym, ifsym,
+    intsym, mainsym, printfsym, returnsym, scanfsym,
+    switchsym, voidsym, whilesym
+};
 void init();
 
 }
@@ -87,8 +94,10 @@ class Symbol{
 public:
     int symbol;
     string name;
+    int reserved_type;
     int num;
     char chr;
+    bool eof;
     //bool with_operator;
     Symbol();
     void setUp(const char* );

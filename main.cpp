@@ -2,9 +2,11 @@
 #include "parameter.h"
 #include "symbol.h"
 #include "error.h"
-Symbol sym;
+#include "grammer.h"
 using namespace std;
 
+Symbol sym;
+Grammer grammer;
 
 void scan_and_print_token(){
     int count = 0;
@@ -33,20 +35,30 @@ void scan_and_print_token(){
         count ++;
     }
 }
-
-int main(int argc, char **argv)
-{
-    char *file;
-    if (argc==2){
-        file = argv[1];
-    }else{
-        file = "14061187_test.txt";
-    }
+char *file;
+void init(){
     //freopen("out.txt","w",stdout);
     //sym.setUp("source.txt");
     sym.setUp(file);
     //freopen("out.txt","w",stdout);
     Type::init();
-    scan_and_print_token();
+
+    grammer.set_sym(&sym);
+}
+
+
+int main(int argc, char **argv)
+{
+    freopen("out.txt","w", stdout);
+
+    if (argc==2){
+        file = argv[1];
+    }else{
+        file = "14061187_test.txt";
+    }
+    init();
+    grammer.start();
+
+    //scan_and_print_token();
     return 0;
 }
