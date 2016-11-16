@@ -68,49 +68,12 @@ call fact
 4:term f1
 3:expr - t1
 args_list : expr 1
-<<<<<<< HEAD
-Error : Need a rparent
-Error : Unkown statement
-printf "program ended" 
-Error : Unkown statement
-call i
-term f1
-expr t0
-args_list : expr 1
-Error : Need a rparent
-Error : Unkown statement
-Error : Invalid identifier
-Error : Unkown statement
-factor n
-term f1
-expr t0
-condition : expr
-Error : Need a rparent
-Error : Unkown statement
-Error : Need a simicolon
-Error : Unkown statement
-Error : Unkown statement
-Error : Need a simicolon
-Error : Unkown statement
-Error : Unkown statement
-call i
-term f1
-expr t0
-args_list : expr 1
-Error : Need a rparent
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-=======
 
 arg list end 
 2:factor __call fact
 2:term * f2
 1:expr t1
 return expr
->>>>>>> origin/master
 function dec: int mod
 function dec:  int mod
 parmeter: int a
@@ -126,20 +89,6 @@ parmeter: int b
 2:term * f3
 1:expr - t1
 assignment a =  expr
-<<<<<<< HEAD
-Error : Unkown statement
-Error : Unkown statement
-Error : Invalid identifier
-Error : Unkown statement
-Error : Need a lparent
-term f1
-expr t0
-Error : Need a rparent
-Error : Need a simicolon
-Error : Unkown statement
-var dec: int a
-var dec: char ch
-=======
 2:factor a
 2:term f1
 1:expr t1
@@ -151,7 +100,6 @@ var dec : int i
 var dec : int _q
 var dec : int _w1220
 var dec : char ch
->>>>>>> origin/master
 printf "start test\n" 
 scanf a
 if dec 
@@ -175,19 +123,6 @@ call proc
 2:term f1
 1:expr t1
 args_list : expr 1
-<<<<<<< HEAD
-Error : Need a rparent
-Error : Unkown statement
-Error : Unkown statement
-Error : Invalid identifier
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-Error : Unkown statement
-printf "arr[a]=" 
-term f1
-expr t0
-=======
 2:factor a
 2:term f1
 1:expr t1
@@ -208,7 +143,6 @@ printf "arr[a]="
 2:factor arr[expr]
 2:term f1
 1:expr t1
->>>>>>> origin/master
 printf expr
 if dec end
 if dec end
