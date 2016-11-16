@@ -51,7 +51,7 @@ expr t0
 args_list : expr 1
 Error : Need a rparent
 Error : Unkown statement
-printf "program ended"
+printf "program ended" 
 Error : Unkown statement
 call i
 term f1
@@ -107,7 +107,7 @@ Error : Need a simicolon
 Error : Unkown statement
 var dec: int a
 var dec: char ch
-printf "start test\n"
+printf "start test\n" 
 scanf a
 factor a
 term f1
@@ -133,7 +133,7 @@ Error : Unkown statement
 Error : Unkown statement
 Error : Unkown statement
 Error : Unkown statement
-printf "arr[a]="
+printf "arr[a]=" 
 term f1
 expr t0
 printf expr
